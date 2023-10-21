@@ -1,6 +1,9 @@
+import java.util.Arrays;
+
 public class Blind75 {
 
-
+    ////ARRAYS
+    //Best time to buy and sell stock
     public static int maxProfit(int[] prices) {
         int profit = 0;
 
@@ -18,9 +21,28 @@ public class Blind75 {
 
     }
 
-    public static void main(String[] args) {
-        int[] price = new int[] {7,6,3,3,7,15,6,3,53,6,23,5,77,85,5,7};
+    //Contains Duplicate
+    public static boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length-1; i++) {
+            System.out.println(nums[i] +  " " + nums[i+1] + " "+i);
+            if(nums[i] == nums[i+1]){
 
-        System.out.println(maxProfit(price));
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+    public static void main(String[] args) {
+        int[] price = new int[] {1,2,3,4};
+        System.out.println(containsDuplicate(price));
+
+
+        //System.out.println(containsDuplicate(price));
     }
 }
