@@ -35,12 +35,60 @@ public class Blind75 {
     }
 
 
+    //Is paladrome checks if an int is a paladrome
+    //Did this using pointers I guess
+    public static boolean isPalindrome(int x) {
+        String reversed = String.valueOf(x);
+        int pointer = reversed.length()-1;
+        for (int i = 0; i < reversed.length()/2; i++) {
+            if(reversed.charAt(i) != reversed.charAt(pointer)){
+                return false;
+            }
+            pointer--;
+        }
+        return true;
+    }
+
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        if(nums2.length == 0){
+            return;
+        }
+        int[] temp = new int[nums1.length];
+
+
+
+        for (int i = 0; i < nums1.length; i++) {
+            if(n == -1){
+                temp[i] = nums2[];
+                n2++;
+            }
+            if(nums1[n1] < nums2[n2]){
+                temp[i] = nums1[n1];
+                n1++;
+            }
+            if(nums1[n1] == nums2[n2]){
+                temp[i] = nums1[n1];
+                n1++;
+            }
+            else{
+                temp[i] = nums2[n2];
+                n2++;
+            }
+        }
+        nums1 = temp;
+        System.out.println(Arrays.toString(nums1));
+
+    }
+
+
 
 
 
     public static void main(String[] args) {
-        int[] price = new int[] {1,2,3,4};
-        System.out.println(containsDuplicate(price));
+        int[] list = new int[] {1,2,3,0,0,0};
+        int[] list1 = new int[] {2,5,6};
+
+        merge(list, 3,list1,3);
 
 
         //System.out.println(containsDuplicate(price));
