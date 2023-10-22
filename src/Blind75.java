@@ -50,33 +50,40 @@ public class Blind75 {
     }
 
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        if(nums2.length == 0){
-            return;
+
+        for (int i = m, j = 0; j < nums2.length; j++,i++) {
+            nums1[i] = nums2[j];
         }
-        int[] temp = new int[nums1.length];
-
-
-
-        for (int i = 0; i < nums1.length; i++) {
-            if(n == -1){
-                temp[i] = nums2[];
-                n2++;
-            }
-            if(nums1[n1] < nums2[n2]){
-                temp[i] = nums1[n1];
-                n1++;
-            }
-            if(nums1[n1] == nums2[n2]){
-                temp[i] = nums1[n1];
-                n1++;
-            }
-            else{
-                temp[i] = nums2[n2];
-                n2++;
-            }
-        }
-        nums1 = temp;
+        Arrays.sort(nums1);
         System.out.println(Arrays.toString(nums1));
+
+
+    }
+
+
+
+    public static int kthFactor(int n, int k) {
+        //n is the number that we are trying to find factors of
+        //k is the factor that we need to find
+
+        int count = 0;
+        int factor = 0;
+
+        for (int i = 1; i <= (n/2)+1; i++) {
+            if(n%i == 0){
+                factor = i;
+                count++;
+            }
+            if(count == k){
+                return factor;
+            }
+        }
+        factor = n;
+        count++;
+        if (count == k){
+            return factor;
+        }
+        return -1;
 
     }
 
@@ -84,11 +91,11 @@ public class Blind75 {
 
 
 
-    public static void main(String[] args) {
-        int[] list = new int[] {1,2,3,0,0,0};
-        int[] list1 = new int[] {2,5,6};
 
-        merge(list, 3,list1,3);
+
+    public static void main(String[] args) {
+
+        System.out.println(kthFactor(7,2));
 
 
         //System.out.println(containsDuplicate(price));
