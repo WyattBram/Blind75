@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.lang.Math;
 
 public class Blind75 {
 
@@ -87,6 +88,55 @@ public class Blind75 {
 
     }
 
+    public static int maxArea(int[] height) {
+        int maxWater = 0;
+        int right = height.length-1;
+        int left = 0;
+
+
+        while (right>left){
+            if(height[left] >= height[right]){
+                if (height[right] * (right - left) > maxWater) {
+                    maxWater = height[right] * (right - left);
+                }
+                right--;
+            }
+            else {
+                if (height[left] * (right - left) > maxWater) {
+                    maxWater = height[left] * (right - left);
+                }
+                left++;
+            }
+
+        }
+
+
+        /*
+        for (int i = 0; i <= n-1; i++) {
+            for (int j = 0; j <= n; j++) {
+                if (height[i] > height[j]){
+                    if (height[j] * (j-i) > maxWater){
+                        maxWater = height[j] * (j-i);
+                    }
+                }
+                else{
+                    if (height[i] * (j-i) > maxWater){
+                        maxWater = height[i] * (j-i);
+                    }
+                }
+            }
+        }*/
+
+        return maxWater;
+
+    }
+
+
+
+    public int mySqrt(int x) {
+        return (int) Math.floor(Math.sqrt(x));
+    }
+
 
 
 
@@ -94,8 +144,9 @@ public class Blind75 {
 
 
     public static void main(String[] args) {
+        int[] nums = new int[] {9};
 
-        System.out.println(kthFactor(7,2));
+        System.out.println();
 
 
         //System.out.println(containsDuplicate(price));
