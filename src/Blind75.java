@@ -133,20 +133,67 @@ public class Blind75 {
 
 
 
-    public int mySqrt(int x) {
-        return (int) Math.floor(Math.sqrt(x));
+    public static int getWinner(int[] arr, int k) {
+        int winner = 0;
+        int streak = 0;
+        int checked = 0;
+
+        if (arr.length == 1){
+            return arr[0];
+        }
+        if (k>arr.length){
+            for (int i = 0; i < arr.length; i++) {
+                return Arrays.stream(arr).max().getAsInt();
+            }
+        }
+
+        while(true){
+            if (streak == k || streak > arr.length){
+                return winner;
+            }
+            if (arr[0] > arr[1]){
+                if (arr[0] == winner){
+                    streak++;
+                }
+                else{
+                    winner = arr[0];
+                }
+                int temp = arr[1];
+                for (int i = 1; i < arr.length-1; i++) {
+                    arr[i] = arr[i+1];
+                }
+                arr[arr.length-1] = temp;
+                checked++;
+            }
+            else{
+                winner = arr[1];
+                streak = 0;
+                streak++;
+
+
+                int temp = arr[0];
+                for (int i = 0; i < arr.length-1; i++) {
+                    arr[i] = arr[i+1];
+                }
+                arr[arr.length-1] = temp;
+            }
+
+        }
+
     }
 
 
 
 
-
+    public int mySqrt(int x) {
+        return (int) Math.floor(Math.sqrt(x));
+    }
 
 
     public static void main(String[] args) {
-        int[] nums = new int[] {9};
+        int[] nums = new int[] {1,25,35,42,68,20};
 
-        System.out.println();
+        System.out.println(getWinner(nums,2));
 
 
         //System.out.println(containsDuplicate(price));
